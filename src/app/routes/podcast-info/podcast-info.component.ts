@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PodcastDataService } from '../../services/podcast-data.service';
 import { Podcast } from '../../classes/podcast';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-podcast-info',
@@ -9,9 +10,9 @@ import { Podcast } from '../../classes/podcast';
   styleUrls: ['./podcast-info.component.scss']
 })
 export class PodcastInfoComponent implements OnInit {
-  podId: number;
+  podId: string;
   private sub: any;
-  podcast: Podcast;
+  podcast: Observable<Podcast>;
   progress: number;
 
   constructor(
@@ -22,7 +23,7 @@ export class PodcastInfoComponent implements OnInit {
   ngOnInit() {
     // get podcast id from route params
     this.sub = this.route.params.subscribe(params => {
-      this.podId = +params['id'];
+      this.podId = params['id'];
     });
 
     // retrieve podcast data

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { PodcastDataService } from './../../services/podcast-data.service';
 import { Podcast } from './../../classes/podcast';
@@ -9,7 +10,7 @@ import { Podcast } from './../../classes/podcast';
   styleUrls: ['./podcast-list.component.scss']
 })
 export class PodcastListComponent implements OnInit {
-  podcasts: Podcast[];
+  podcasts: Observable<Podcast[]>;
 
   constructor(private podcastDataService: PodcastDataService) {}
 

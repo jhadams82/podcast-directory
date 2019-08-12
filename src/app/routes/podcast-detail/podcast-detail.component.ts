@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PodcastDataService } from './../../services/podcast-data.service';
 import { Podcast } from './../../classes/podcast';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-podcast-detail',
@@ -10,10 +11,10 @@ import { Podcast } from './../../classes/podcast';
   styleUrls: ['./podcast-detail.component.scss']
 })
 export class PodcastDetailComponent implements OnInit, OnDestroy {
-  podId: number;
+  podId: string;
   private podSub: any;
   private authSub: any;
-  podcast: Podcast;
+  podcast: Observable<Podcast>;
 
   isLoggedIn: boolean;
   loggedInUser: string;
@@ -28,7 +29,7 @@ export class PodcastDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // get podcast id from route params
     this.podSub = this.route.params.subscribe(params => {
-      this.podId = +params['id'];
+      this.podId = params['id'];
     });
 
     // retrieve podcast data

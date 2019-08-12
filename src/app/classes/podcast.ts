@@ -1,7 +1,7 @@
 import { Host } from './host';
 
 export class Podcast {
-  id: number;
+  id: string;
   category: string;
   contact: {
     email: string;
