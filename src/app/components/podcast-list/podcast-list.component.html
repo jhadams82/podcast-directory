@@ -1,7 +1,7 @@
 <!-- Podcast List -->
 <div class="container">
   <div class="row">
-    <div *ngFor="let podcast of podcasts" class="col-6 col-md-4 col-lg-3 mb-3">
+    <div *ngFor="let podcast of podcasts | async" class="col-6 col-md-4 col-lg-3 mb-3">
       <a
         routerLink="/podcast/{{ podcast.id }}"
         routerLinkActive="router-link-active"
