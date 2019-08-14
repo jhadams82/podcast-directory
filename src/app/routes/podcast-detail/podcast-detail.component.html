@@ -17,7 +17,7 @@
       <h2>{{ podcast.title }}</h2>
       <h4 class="pod-category">{{ podcast.category }}</h4>
       <p *ngIf="podcast.description">{{ podcast.description }}</p>
-      <div *ngIf="podcast.hosts.length > 0">
+      <div *ngIf="podcast?.hosts?.length > 0">
         <p>
           Hosted by
           <span *ngFor="let host of podcast.hosts; let i = index">
@@ -35,7 +35,7 @@
         </p>
       </div>
       <p *ngIf="podcast.yearStarted">
-        Podcasting since {{ podcast.yearStarted }}
+        Podcasting since {{ podcast?.yearStarted }}
       </p>
     </div>
   </div>
