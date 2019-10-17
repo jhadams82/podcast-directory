@@ -8,7 +8,7 @@ import { Podcast } from './../classes/podcast';
   providedIn: 'root'
 })
 export class PodcastDataService {
-  private dbUrl = 'https://nashville-podcast-db.herokuapp.com/podcasts';
+  private dbUrl = 'https://nashville-podcast-db.herokuapp.com/podcasts/';
   private podcastCategories: string[] = [
     'News & Politics',
     'Comedy',
@@ -34,7 +34,8 @@ export class PodcastDataService {
   };
 
   getOnePodcast(id: string): Observable<Podcast> {
-    return this.http.get<Podcast> (this.dbUrl + '/' + id);
+    console.log("getting from " + this.dbUrl + id);
+    return this.http.get<Podcast> (this.dbUrl + id);
   };
 
   getCategories = () => {

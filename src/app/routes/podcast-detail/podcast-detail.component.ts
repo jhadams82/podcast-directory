@@ -32,9 +32,10 @@ export class PodcastDetailComponent implements OnInit, OnDestroy {
       this.podId = params['id'];
     });
 
+    console.log("getting podcast " + this.podId);
     // retrieve podcast data
     this.podcast = this.podcastDataService.getOnePodcast(this.podId);
-
+    console.log(this.podcast);
     // check loggedIn status
     this.authSub = this.authService.authState.subscribe(state => {
       this.isLoggedIn = state.isLoggedIn;
