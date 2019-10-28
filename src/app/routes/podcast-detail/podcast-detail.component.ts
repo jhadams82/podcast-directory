@@ -28,14 +28,17 @@ export class PodcastDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // get podcast id from route params
-    this.podSub = this.route.params.subscribe(params => {
-      this.podId = params['id'];
+    this.podSub = this.route.paramMap.subscribe(params => {
+      console.log(params);
+      this.podId = params.get('id');
+      console.log("podId:" + this.podId);
     });
 
     console.log("getting podcast " + this.podId);
+    
     // retrieve podcast data
     this.podcast = this.podcastDataService.getOnePodcast(this.podId);
-    console.log(this.podcast);
+    
     // check loggedIn status
     this.authSub = this.authService.authState.subscribe(state => {
       this.isLoggedIn = state.isLoggedIn;
