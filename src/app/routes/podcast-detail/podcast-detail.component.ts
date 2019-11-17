@@ -12,10 +12,10 @@ import { Observable } from 'rxjs';
 })
 export class PodcastDetailComponent implements OnInit, OnDestroy {
   podId: string;
+  podcast: Podcast;
   private podSub: any;
   private authSub: any;
-  podcast: Observable<Podcast>;
-
+  
   isLoggedIn: boolean;
   loggedInUser: string;
   isUserVerified: boolean;
@@ -28,16 +28,13 @@ export class PodcastDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // get podcast id from route params
-    this.podSub = this.route.paramMap.subscribe(params => {
-      console.log(params);
-      this.podId = params.get('id');
-      console.log("podId:" + this.podId);
-    });
-
-    console.log("getting podcast " + this.podId);
+    this.podId = this.route.snapshot.paramMap.get("id");
+    
+    console.log(this.route.params);
+    console.log("podId: " + this.podId);
     
     // retrieve podcast data
-    this.podcast = this.podcastDataService.getOnePodcast(this.podId);
+    this.podSub = this.podcastDataService.getOnePodcast(this.podId).subscribe((podcast) => { this.podcast = podcast });
     
     // check loggedIn status
     this.authSub = this.authService.authState.subscribe(state => {
