@@ -34,9 +34,12 @@ export class PodcastDataService {
   };
 
   getOnePodcast(id: string): Observable<Podcast> {
-    console.log("getting from " + this.dbUrl + id);
     return this.http.get<Podcast> (this.dbUrl + id);
   };
+
+  postPodcast(podcast: Podcast): Observable<Podcast> { 
+    return this.http.post<Podcast> (this.dbUrl, podcast);
+  }
 
   getCategories = () => {
     return this.podcastCategories;

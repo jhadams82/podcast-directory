@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class PodcastInfoComponent implements OnInit {
   podId: string;
-  private sub: any;
-  podcast: Observable<Podcast>;
+  private podSub: any;
+  podcast: Podcast;
   progress: number;
 
   constructor(
@@ -22,17 +22,15 @@ export class PodcastInfoComponent implements OnInit {
 
   ngOnInit() {
     // get podcast id from route params
-    this.sub = this.route.params.subscribe(params => {
-      this.podId = params['id'];
-    });
-
+    this.podId = this.route.snapshot.paramMap.get("id");
+    
     // retrieve podcast data
-    this.podcast = this.podcastDataService.getOnePodcast(this.podId);
-
+    this.podSub = this.podcastDataService.getOnePodcast(this.podId).subscribe((podcast) => { this.podcast = podcast });
+    
     this.progress = 1;
   }
 
-  lastPage() {
+  previousPage() {
     this.progress--;
   }
 
@@ -40,5 +38,7 @@ export class PodcastInfoComponent implements OnInit {
     this.progress++;
   }
 
-  savePodcast() {}
+  savePodcast() { 
+    
+  }
 }

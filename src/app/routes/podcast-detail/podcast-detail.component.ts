@@ -30,9 +30,6 @@ export class PodcastDetailComponent implements OnInit, OnDestroy {
     // get podcast id from route params
     this.podId = this.route.snapshot.paramMap.get("id");
     
-    console.log(this.route.params);
-    console.log("podId: " + this.podId);
-    
     // retrieve podcast data
     this.podSub = this.podcastDataService.getOnePodcast(this.podId).subscribe((podcast) => { this.podcast = podcast });
     
