@@ -1,7 +1,7 @@
 <div class="container">
-  <app-podcast-form *ngIf="progress === 1"></app-podcast-form>
-  <app-subscription-form *ngIf="progress === 2"></app-subscription-form>
-  <app-social-form *ngIf="progress === 3"></app-social-form>
+  <app-podcast-form [podcast]="podcast" *ngIf="progress === 1"></app-podcast-form>
+  <app-subscription-form [podcast]="podcast" *ngIf="progress === 2"></app-subscription-form>
+  <app-social-form [podcast]="podcast" *ngIf="progress === 3"></app-social-form>
 
   <hr />
   <div class="text-right">
