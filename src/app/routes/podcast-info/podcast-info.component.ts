@@ -39,6 +39,14 @@ export class PodcastInfoComponent implements OnInit {
   }
 
   savePodcast() { 
-    
+    if (this.podId) { 
+      //this.podcastDataService.put
+    } else {
+      //this.podcastDataService.post
+    }
   }
+}
+
+NgOnDestroy() {
+  this.podSub.Unsubscribe();
 }
