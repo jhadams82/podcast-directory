@@ -1,5 +1,6 @@
 import { FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Podcast } from 'src/app/classes/podcast';
 
 @Component({
   selector: 'app-social-form',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocialFormComponent implements OnInit {
   socForm;
+
+  @Input() podcast: Podcast;
 
   constructor(private fb: FormBuilder) {}
 

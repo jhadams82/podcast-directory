@@ -2,14 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PodcastDataService } from '../../services/podcast-data.service';
 import { Podcast } from '../../classes/podcast';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-podcast-info',
   templateUrl: './podcast-info.component.html',
   styleUrls: ['./podcast-info.component.scss']
 })
-export class PodcastInfoComponent implements OnInit {
+export class PodcastInfoComponent implements OnInit, OnDestroy {
   podId: string;
   private podSub: any;
   podcast: Podcast;
@@ -45,8 +44,8 @@ export class PodcastInfoComponent implements OnInit {
       //this.podcastDataService.post
     }
   }
-}
 
-NgOnDestroy() {
-  this.podSub.Unsubscribe();
+  ngOnDestroy() {
+    this.podSub.unsubscribe();
+  }
 }

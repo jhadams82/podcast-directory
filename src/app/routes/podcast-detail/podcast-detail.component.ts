@@ -3,7 +3,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PodcastDataService } from './../../services/podcast-data.service';
 import { Podcast } from './../../classes/podcast';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-podcast-detail',

@@ -11,6 +11,7 @@
       class="form-control"
       id="podcastTitle"
       aria-describedby="podcastTitle"
+      value="{{ podcast.title }}"
     />
   </div>
 
@@ -22,6 +23,7 @@
       id="podcastDescription"
       aria-describedby="podcastDescription"
       rows="3"
+      value="{{ podcast.description }}"
     ></textarea>
   </div>
 
@@ -31,6 +33,7 @@
       formControlName="category"
       class="form-control"
       id="podcastCategory"
+      value="{{ podcast.category }}"
     >
       <option value="{{ undefined }}"></option>
       <option *ngFor="let category of categories" value="{{ category }}">{{
@@ -41,7 +44,7 @@
 
   <div class="form-group col-12 col-sm-6">
     <label for="podcastYear">Year of First Episode</label>
-    <select formControlName="yearStarted" class="form-control" id="podcastYear">
+    <select formControlName="yearStarted" class="form-control" id="podcastYear" value="{{ podcast.yearStarted }}">
       <option value="{{ undefined }}"></option>
       <option *ngFor="let year of years" value="{{ year }}">{{ year }}</option>
     </select>

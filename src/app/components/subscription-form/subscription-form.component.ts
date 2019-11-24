@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Podcast } from 'src/app/classes/podcast';
 
 @Component({
   selector: 'app-subscription-form',
@@ -8,6 +9,9 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SubscriptionFormComponent implements OnInit {
   subForm;
+
+  @Input() podcast: Podcast;
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
