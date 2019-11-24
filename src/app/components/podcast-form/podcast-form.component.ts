@@ -42,6 +42,7 @@ export class PodcastFormComponent implements OnInit, OnChanges {
     console.log("changes: \n");
     console.log(changes);
     if (!changes.podcast.firstChange) { 
+      this.hostForms.removeAt(0);
       this.podcast.hosts.forEach((host, i) => { 
         const currentHost = this.fb.group({
           firstName: host.firstName,
